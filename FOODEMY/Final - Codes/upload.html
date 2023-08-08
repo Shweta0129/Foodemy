@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html background = "upload.jpeg">
+    
+ <head>
+    <title>
+        <link rel="stylesheet" a href="upload.css">  
+    </title>
+ 
+    <style>
+        
+        body {
+            
+            text-align: center;
+            border: 2cm;
+            position: absolute;
+            left: 3cm;
+            width: 9cm;
+            height: 2.5cm;
+            opacity: 0.75;
+            align-items: center;
+            background-color: #5a99f1;
+            border-radius: 25px;
+            margin-top: 2cm;
+        }
+    </style>
+</head>
+ 
+<body>
+   
+ 
+    <!-- File input field -->
+    <p style="color: #fafbfd;" >you can upload your video here</p>
+
+    <input type="file" id="file"
+        onchange="return fileValidation()" />
+ 
+    <!-- video preview -->
+    <div id="videoPreview"></div>
+    <script>
+        function fileValidation() {
+            var fileInput =
+                document.getElementById('file');
+             
+            var filePath = fileInput.value;
+         
+            // Allowing file type
+            var allowedExtensions =
+                    /(\.mp4|\.gif)$/i;
+             
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            }
+            else
+            {
+             
+                // video preview preview
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById(
+                            'videoPreview').innerHTML =
+                            '<video sr="' + e.target.result
+                            + '"/>';
+                    };
+                     
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+    </script>
+
+    
+    
+    
+    
+    
+</body>
+
+<style>
+    h1 {
+        background-color: white;
+        left: 10cm;
+        text-align:left;
+        width: 10cm;
+        margin-top: 3cm;
+        margin-bottom: 3cm;
+        height: 8cm;
+        padding: 2cm;
+        border-radius: 25px;
+        
+    }
+</style>
+<h1>
+    you can upload your videos here!
+    you just have to upload your video attaching the recipe file with it
+    proffesionals will take a look and If your video gets verified your video can get featured on Foodemy!!
+ 
+</h1>
+
+</html>
